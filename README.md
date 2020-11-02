@@ -19,7 +19,7 @@ W tym poradniku przestawiam, jak napisać prostą aplikację do dodawania i usuw
 
 ---
 
-### ⚙️ Krok 1. Depencencies 
+### ⚙️ Krok 1. Dependencies
 
 Stwórzmy nowy projekt, do którego dodamy dwie nowe zależności.
 

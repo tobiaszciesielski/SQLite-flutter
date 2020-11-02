@@ -401,7 +401,7 @@ Implementacja listy studentów.
 ---
 ### 💬 Podsumowanie
 
-Zapoznałeś się z obsługą `sqlfite`. Teraz jesteś w stanie budować zapamiętujące dane. To otwiera przed Tobą pełnie możliwości. Co dalej? Zachęcam do rozbudowania powyższej aplikacji (walidacja danych, kolejne pole formularza, aktualizowanie studenta) oraz zapoznania się z  [floor](https://pub.dev/packages/floor).
+Zapoznałeś się z obsługą `sqlfite`. Teraz jesteś w stanie budować aplikacje zapamiętujące dane. To otwiera przed Tobą pełnie możliwości. Co dalej? Zachęcam do rozbudowania powyższej aplikacji (walidacja danych, kolejne pole formularza, aktualizowanie studenta) oraz zapoznania się z [floor](https://pub.dev/packages/floor).
 Dziękuję za przeczytanie tego artykułu i życzę Ci powodzenia w dalszym rozwijaniu się. 
 
 \- Tobiasz Ciesielski [tobiaszciesielski](https://github.com/tobiaszciesielski)

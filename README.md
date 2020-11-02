@@ -395,7 +395,9 @@ Implementacja listy studentów.
 ```
 ---
 ### 👏  Efekt końcowy
-![enter image description here](https://i.ibb.co/hsj3mV6/ezgif-6-5488300e3db8.gif =300x)
+
+<img src="https://i.ibb.co/hsj3mV6/ezgif-6-5488300e3db8.gif" width="300">
+
 ---
 ### 💬 Podsumowanie
 

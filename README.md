@@ -1,6 +1,6 @@
-# SQLite i flutter - z czym to się je*** ***.
+# SQLite i flutter - z czym to się je\*** ***.
 
-W tym poradniku przestawiam, jak napisać prostą aplikację do dodawania i usuwania studentów za pomocą interfejsu użytkownika w bazie danych.
+W tym poradniku przestawiam, jak napisać prostą aplikację do dodawania i usuwania studentów za pomocą interfejsu użytkownika w bazie danych. 
 
 ---
 
@@ -9,7 +9,8 @@ W tym poradniku przestawiam, jak napisać prostą aplikację do dodawania i usuw
 - 🔗Posiadasz skonfigurowane  [IDE](https://flutter.dev/docs/get-started/editor) 
 - 🔗Zapoznałeś się ze składnią języka [Dart](https://learnxinyminutes.com/docs/dart/)
 - 🔗Wykonałeś  [pierwsze kroki](https://flutter.dev/docs/get-started/codelab) we flutterze
-- ☕ Masz obok siebie kawę
+
+☕ Jeżeli wszystko ogarnięte to kawusia w dłoń i lecimy.
 
 ## 📚Czym jest flutter i SQLite
 
@@ -44,29 +45,31 @@ W folderze `lib` stwórzmy folder `database` w którym będziemy trzymać całą
 
 W folderze `database` stwórzmy folder`models`  (będziemy tu przechowywać klasy, które reprezentują model danych w bazie). Dodajmy do niego nowy plik `StudentModel.dart`.
 ```
-+ --- lib/
-|       main.dart
-|
-+ --- + database/
-      |   database.dart
++ --- + lib/
+      |   main.dart
       |
-      + --- models/
-              StudentModel.dart
+      + --- + database/
+            |   database.dart
+            |
+            + --- models/
+                    StudentModel.dart
 ```
 
 Gdy mamy przygotowaną strukturę, pora zabrać się za kodzenie 🧑‍💻. 
 
 ---
-### 🌳 Krok 3. Model Class
+### 📐 Krok 3. Model Class
 Aby zapewnić spójną komunikację między bazą danych a naszą aplikacją musimy zadbać o odpowiednie przechowywanie spójnego modelu danych. Posłuży nam do tego klasa `StudentModelClass`.
 Obiekt Student będzie posiadał 4 pola. Typy danych będą różne dla języka Dart i SQL.  Pole`id` będzie  kluczem głównym.
 
-| Pole klasy | Dart   | SQL  |
+| Pole klasy | Dart   | SQLite  |
 |-----------:|-------:|-----:|
 |🗝️ id       | int    | INT  |
 | firstName  | String | TEXT |
 | lastName   | String | TEXT |
 | grade	     | int    | INT  |
+
+🔗 [Typy danych SQLite](https://www.sqlite.org/datatype3.html)
 
 Implementacja wygląda następująco. Pola posiadają typ `final`, ponieważ chcemy aby pierwsza przypisana do nich wartość była stała. Konstruktor domyślny z listą inicjalizacyjną. 
 
@@ -83,7 +86,44 @@ class Student {
     this.lastName,  
     this.grade  
   });  
-
-//...
+}
 ```
-To nie koniec. Format danych pobranych z SQLite ma postać JSON. Aby konwertować 
+To nie koniec. SQLite z naszą aplikacją wymienia się danymi w postaci [Mapy](https://www.tutorialspoint.com/dart_programming/dart_programming_map.htm) . Aby sprawnie przechodzić z instancji klasy na mapę i odwrotnie należy zaimplementować odpowiednie do tego metody.
+Zmapujemy ciąg znaków na dynamiczny typ danych ponieważ posiadamy różne rodzaje danych w modelu `Map<String, dynamic>`.
+
+```dart
+class Student {  
+//...
+
+factory Student.fromMap(  
+  Map<String, dynamic> map) => new Student(  
+    id: map["id"],  
+    firstName: map["first_name"],  
+    lastName: map["last_name"],  
+    grade: map["grade"]  
+);  
+  
+Map<String, dynamic> toMap() => {  
+  "id": id,  
+  "first_name": firstName,  
+  "last_name": lastName,  
+  "grade": grade  
+};
+```
+Zauważ, że konstruktor klasy Student `fromMap` posiada słowo kluczowe `factory` (tak zwany *factory constructor*) dzięki któremu możemy obsłużyć logikę tworzenia instancji, której nie jest w stanie obsłużyć lista inicjalizacyjna. 
+
+🔗 Więcej o *factory consturctor* na [dart.dev](https://dart.dev/guides/language/language-tour#factory-constructors) oraz [stackoverflow](https://stackoverflow.com/questions/53886304/understanding-factory-constructor-code-example-dart).
+
+---
+### 📊 Krok 4. DatabaseProvider
+
+---
+### 🏷️ Krok 5. CREATE TABLE
+
+---
+### 🚀 Krok 6. CRUD
+
+---
+### 🌟 Krok 7. UI
+---
+### 👏Podsumowanie
